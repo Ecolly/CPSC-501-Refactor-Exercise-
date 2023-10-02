@@ -1,5 +1,3 @@
-package com.adaptionsoft.games.uglytrivia;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -35,8 +33,6 @@ public class Game {
 	}
 
 	public boolean add(String playerName) {
-		
-		
 	    players.add(playerName);
 	    places[howManyPlayers()] = 0;
 	    purses[howManyPlayers()] = 0;
@@ -58,7 +54,7 @@ public class Game {
 		if (inPenaltyBox[currentPlayer]) {
 			if (roll % 2 != 0) {
 				isGettingOutOfPenaltyBox = true;
-				
+				inPenaltyBox[currentPlayer] = false;
 				System.out.println(players.get(currentPlayer) + " is getting out of the penalty box");
 				places[currentPlayer] = places[currentPlayer] + roll;
 				if (places[currentPlayer] > 11) places[currentPlayer] = places[currentPlayer] - 12;
@@ -99,7 +95,7 @@ public class Game {
 	}
 	
 	
-	private String currentCategory() {
+	private String currentCategory() { //depending on the location of the player, return the question
 		if (places[currentPlayer] == 0) return "Pop";
 		if (places[currentPlayer] == 4) return "Pop";
 		if (places[currentPlayer] == 8) return "Pop";
@@ -163,7 +159,7 @@ public class Game {
 	}
 
 
-	private boolean didPlayerWin() {
+	public boolean didPlayerWin() {
 		return !(purses[currentPlayer] == 6);
 	}
 }
