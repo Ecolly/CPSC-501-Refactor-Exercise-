@@ -37,4 +37,7 @@ public class Player {
     public void setinPenaltyBox(boolean pen){
         this.inPenaltyBox = pen;
     }
+	public boolean didPlayerWin() {
+		return !(this.getPurse()== 6);
+	}
 }

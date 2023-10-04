@@ -5,11 +5,9 @@ import static org.junit.Assert.assertEquals;;
 
 public class GameTest {
     @Test
-    public void didPlayerWintest(){ //if player wins then the test is set to true
-        Game g = new Game();
-        g.currentID = 0;
-        g.add("bob");
-        g.playerlist.get(0).setPurse(5);
+    public void didPlayerWintest(){ //if player loses then the test is set to true
+        Player g = new Player("bob");
+        g.setPurse(5);
         assertTrue("Player won", g.didPlayerWin());
     }
     @Test

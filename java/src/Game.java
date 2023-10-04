@@ -116,7 +116,7 @@ public class Game {
 						+ currentplayer.getPurse()
 						+ " Gold Coins.");
 				
-				boolean winner = didPlayerWin();
+				boolean winner = currentplayer.didPlayerWin();
 				currentID++;
 				if (currentID == playerlist.size()) currentID = 0;
 				return winner;
@@ -135,7 +135,7 @@ public class Game {
 					+ currentplayer.getPurse()
 					+ " Gold Coins.");
 			
-			boolean winner = didPlayerWin();
+			boolean winner = currentplayer.didPlayerWin();
 			currentID++;
 			if (currentID == playerlist.size()) currentID = 0;
 			
@@ -152,10 +152,5 @@ public class Game {
 		currentID++;
 		if (currentID == playerlist.size()) currentID = 0;
 		return true;
-	}
-
-	public boolean didPlayerWin() {
-		Player currentplayer = playerlist.get(currentID);
-		return !(currentplayer.getPurse()== 6);
 	}
 }
