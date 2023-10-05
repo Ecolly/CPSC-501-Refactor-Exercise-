@@ -1,6 +1,8 @@
 import org.junit.jupiter.api.Test;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;;
 
 public class GameTest {
@@ -57,9 +59,15 @@ public class GameTest {
     // public void testPlayerMoveLocation(){
 
     // }
-    // @Test
-    // public void QuestionTest(){
-
-    // }
+    @Test
+    public void QuestionTeststart(){
+        Game g = new Game();
+        assertEquals("Rock Question start","Rock Question 1", g.rockQuestions.get(1));
+    }
+    @Test
+    public void QuestionTestend(){
+        Game g = new Game();
+        assertEquals("Rock Question start","Rock Question 49", g.rockQuestions.getLast());
+    }
     
 }

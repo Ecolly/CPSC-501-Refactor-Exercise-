@@ -4,29 +4,22 @@ import java.util.List;
 
 public class Game {
     List <Player> playerlist = new ArrayList<>();
-    
-    LinkedList popQuestions = new LinkedList();
-    LinkedList scienceQuestions = new LinkedList();
-    LinkedList sportsQuestions = new LinkedList();
-    LinkedList rockQuestions = new LinkedList();
+    LinkedList <String> popQuestions = new LinkedList<>();
+    LinkedList <String> scienceQuestions = new LinkedList<>();
+    LinkedList <String>sportsQuestions = new LinkedList<>();
+    LinkedList <String> rockQuestions = new LinkedList<>();
     
     int currentID = 0;
     boolean isGettingOutOfPenaltyBox;
     
-    public  Game(){
+    public Game(){
     	for (int i = 0; i < 50; i++) {
 			popQuestions.addLast("Pop Question " + i);
 			scienceQuestions.addLast(("Science Question " + i));
 			sportsQuestions.addLast(("Sports Question " + i));
-			rockQuestions.addLast(createRockQuestion(i));
+			rockQuestions.addLast(("Rock Question " + i));
     	}
     }
-
-
-	
-	public String createRockQuestion(int index){
-		return "Rock Question " + index;
-	}
 
 	public void add(String playerName) {
 		Player player = new Player(playerName);
@@ -38,7 +31,7 @@ public class Game {
 	public int howManyPlayers() {
 		return playerlist.size();
 	}
-
+	
 	public void roll(int roll) {
 		Player currentplayer = playerlist.get(currentID);
 		System.out.println(currentplayer.getName() + " is the current player");
