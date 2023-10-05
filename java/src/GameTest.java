@@ -53,9 +53,13 @@ public class GameTest {
         g.add("bob");
         assertEquals("There should be only one player",1, g.playerlist.size()) ;
     }
-    @Test
-    public void testPlayerMoveLocation(){
+    // @Test
+    // public void testPlayerMoveLocation(){
 
-    }
+    // }
+    // @Test
+    // public void QuestionTest(){
+
+    // }
     
 }

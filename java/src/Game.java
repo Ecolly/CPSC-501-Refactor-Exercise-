@@ -22,20 +22,17 @@ public class Game {
     	}
     }
 
+
+	
 	public String createRockQuestion(int index){
 		return "Rock Question " + index;
 	}
-	
-	public boolean isPlayable() {
-		return (howManyPlayers() >= 2);
-	}
 
-	public boolean add(String playerName) {
+	public void add(String playerName) {
 		Player player = new Player(playerName);
 	    playerlist.add(player);    
 	    System.out.println(playerName + " was added");
 	    System.out.println("They are player number " + playerlist.size());
-		return true;
 	}
 	
 	public int howManyPlayers() {
@@ -47,7 +44,7 @@ public class Game {
 		System.out.println(currentplayer.getName() + " is the current player");
 		System.out.println("They have rolled a " + roll);
 		
-		if (currentplayer.getinPenaltyBox()) {
+		if (currentplayer.getinPenaltyBox()) { //if the player is in penalty box
 			if (roll % 2 != 0) {
 				isGettingOutOfPenaltyBox = true;
 				currentplayer.setinPenaltyBox(false);
