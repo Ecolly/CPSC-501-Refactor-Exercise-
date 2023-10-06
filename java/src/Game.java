@@ -1,35 +1,24 @@
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class Game {
+	//variables
     List <Player> playerlist = new ArrayList<>();
-    LinkedList <String> popQuestions = new LinkedList<>();
-    LinkedList <String> scienceQuestions = new LinkedList<>();
-    LinkedList <String>sportsQuestions = new LinkedList<>();
-    LinkedList <String> rockQuestions = new LinkedList<>();
-    
-    int currentID = 0;    
+	Question questiondeck;
+    int currentID = 0;
+
     public Game(){
-    	createQuestionList();
+    	this.questiondeck = new Question();
+		this.questiondeck.createQuestionList();
     }
 	
-	public void createQuestionList(){
-		for (int i = 0; i < 50; i++) {
-			popQuestions.addLast("Pop Question " + i);
-			scienceQuestions.addLast(("Science Question " + i));
-			sportsQuestions.addLast(("Sports Question " + i));
-			rockQuestions.addLast(("Rock Question " + i));
-    	}
-
-	}
 	public void addPlayer(String playerName) {
 		Player player = new Player(playerName);
 	    playerlist.add(player);    
 	    System.out.println(playerName + " was added");
 	    System.out.println("They are player number " + playerlist.size());
 	}
-	
+
 	public int howManyPlayers() {
 		return playerlist.size();
 	}
@@ -44,39 +33,14 @@ public class Game {
 				currentplayer.setinPenaltyBox(false);
 				System.out.println(currentplayer.getName() + " is getting out of the penalty box");
 				currentplayer.setLocation(roll);
-				askQuestion();
+				questiondeck.askQuestion(currentplayer);
 			} else {
 				System.out.println(currentplayer.getName() + " is not getting out of the penalty box");
 				}
 		} else {
 			currentplayer.setLocation(roll);
-			askQuestion();
+			questiondeck.askQuestion(currentplayer);
 		}
-	}
-
-	private void askQuestion() {
-		if (currentCategory() == "Pop")
-			System.out.println(popQuestions.removeFirst());
-		if (currentCategory() == "Science")
-			System.out.println(scienceQuestions.removeFirst());
-		if (currentCategory() == "Sports")
-			System.out.println(sportsQuestions.removeFirst());
-		if (currentCategory() == "Rock")
-			System.out.println(rockQuestions.removeFirst());		
-	}
-	
-	private String currentCategory() { //depending on the location of the player, return the question
-		Player currentplayer = playerlist.get(currentID);
-		if (currentplayer.getLocation() == 0) return "Pop";
-		if (currentplayer.getLocation() == 4) return "Pop";
-		if (currentplayer.getLocation() == 8) return "Pop";
-		if (currentplayer.getLocation() == 1) return "Science";
-		if (currentplayer.getLocation() == 5) return "Science";
-		if (currentplayer.getLocation() == 9) return "Science";
-		if (currentplayer.getLocation() == 2) return "Sports";
-		if (currentplayer.getLocation() == 6) return "Sports";
-		if (currentplayer.getLocation() == 10) return "Sports";
-		return "Rock";
 	}
 
 	public boolean wasCorrectlyAnswered() {
