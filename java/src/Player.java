@@ -30,6 +30,8 @@ public class Player {
     //setter methods
     public void setLocation(int newloc){
         this.location = this.location + newloc;
+        if (this.getLocation() > 11) this.setLocation(-12);
+        System.out.println(this.getName() + "'s new location is " + this.getLocation());
     }
     public void setPurse(int coin){
         this.purse = this.purse + coin;
@@ -40,4 +42,7 @@ public class Player {
 	public boolean didPlayerWin() {
 		return !(this.getPurse()== 6);
 	}
+
+			
+			
 }

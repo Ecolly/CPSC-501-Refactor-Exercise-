@@ -44,27 +44,14 @@ public class Game {
 				currentplayer.setinPenaltyBox(false);
 				System.out.println(currentplayer.getName() + " is getting out of the penalty box");
 				currentplayer.setLocation(roll);
-				if (currentplayer.getLocation() > 11) currentplayer.setLocation(-12);
-				System.out.println(currentplayer.getName()
-						+ "'s new location is " 
-						+ currentplayer.getLocation());
-				System.out.println("The category is " + currentCategory());
 				askQuestion();
 			} else {
 				System.out.println(currentplayer.getName() + " is not getting out of the penalty box");
 				}
-			
 		} else {
 			currentplayer.setLocation(roll);
-			if (currentplayer.getLocation() > 11) currentplayer.setLocation(-12);
-			
-			System.out.println(currentplayer.getName()
-						+ "'s new location is " 
-						+ currentplayer.getLocation());
-			System.out.println("The category is " + currentCategory());
 			askQuestion();
 		}
-		
 	}
 
 	private void askQuestion() {
@@ -77,7 +64,6 @@ public class Game {
 		if (currentCategory() == "Rock")
 			System.out.println(rockQuestions.removeFirst());		
 	}
-	
 	
 	private String currentCategory() { //depending on the location of the player, return the question
 		Player currentplayer = playerlist.get(currentID);

@@ -61,4 +61,9 @@ public class GameTest {
     public void QuestionTestend(){
         assertEquals("Rock Question start","Rock Question 49", g.rockQuestions.getLast());
     }
+    public void setLocationTest(){
+        Player current = g.playerlist.get(0);
+        current.setLocation(14);
+        assertEquals("reset to 2", 2, current.getLocation());
+    }
 }
