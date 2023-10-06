@@ -23,7 +23,7 @@ public class Player {
     public int getPurse(){
         return purse;
     }
-    public boolean getinPenaltyBox(){
+    public boolean isInPenalityBox(){
         return inPenaltyBox;
     }
 

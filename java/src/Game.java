@@ -9,9 +9,7 @@ public class Game {
     LinkedList <String>sportsQuestions = new LinkedList<>();
     LinkedList <String> rockQuestions = new LinkedList<>();
     
-    int currentID = 0;
-    boolean isGettingOutOfPenaltyBox;
-    
+    int currentID = 0;    
     public Game(){
     	for (int i = 0; i < 50; i++) {
 			popQuestions.addLast("Pop Question " + i);
@@ -32,19 +30,17 @@ public class Game {
 		return playerlist.size();
 	}
 	
-	public void roll(int roll) {
+	public void MoveLocation(int roll) {
 		Player currentplayer = playerlist.get(currentID);
 		System.out.println(currentplayer.getName() + " is the current player");
 		System.out.println("They have rolled a " + roll);
 		
-		if (currentplayer.getinPenaltyBox()) { //if the player is in penalty box
+		if (currentplayer.isInPenalityBox()) { //if the player is in penalty box
 			if (roll % 2 != 0) {
-				isGettingOutOfPenaltyBox = true;
 				currentplayer.setinPenaltyBox(false);
 				System.out.println(currentplayer.getName() + " is getting out of the penalty box");
 				currentplayer.setLocation(roll);
-				if (currentplayer.getLocation() > 11) currentplayer.setLocation(12);
-				
+				if (currentplayer.getLocation() > 11) currentplayer.setLocation(-12);
 				System.out.println(currentplayer.getName()
 						+ "'s new location is " 
 						+ currentplayer.getLocation());
@@ -52,13 +48,11 @@ public class Game {
 				askQuestion();
 			} else {
 				System.out.println(currentplayer.getName() + " is not getting out of the penalty box");
-				isGettingOutOfPenaltyBox = false;
 				}
 			
 		} else {
-		
 			currentplayer.setLocation(roll);
-			if (currentplayer.getLocation() > 11) currentplayer.setLocation(12);
+			if (currentplayer.getLocation() > 11) currentplayer.setLocation(-12);
 			
 			System.out.println(currentplayer.getName()
 						+ "'s new location is " 
@@ -97,39 +91,21 @@ public class Game {
 
 	public boolean wasCorrectlyAnswered() {
 		Player currentplayer = playerlist.get(currentID);
-		if (currentplayer.getinPenaltyBox()){
-			if (isGettingOutOfPenaltyBox) {
-				System.out.println("Answer was correct!!!!");
-				currentplayer.setPurse(1);
-				System.out.println(currentplayer.getName()
-						+ " now has "
-						+ currentplayer.getPurse()
-						+ " Gold Coins.");
-				
-				boolean winner = currentplayer.didPlayerWin();
-				currentID++;
-				if (currentID == playerlist.size()) currentID = 0;
-				return winner;
-			} else {
-				currentID++;
-				if (currentID == playerlist.size()) currentID = 0;
-				return true;
-			}
-			
-		} else {
-		
-			System.out.println("Answer was corrent!!!!");
+		if (!currentplayer.isInPenalityBox()){
+			System.out.println("Answer was correct!!!!");
 			currentplayer.setPurse(1);
 			System.out.println(currentplayer.getName()
 					+ " now has "
 					+ currentplayer.getPurse()
 					+ " Gold Coins.");
-			
 			boolean winner = currentplayer.didPlayerWin();
 			currentID++;
 			if (currentID == playerlist.size()) currentID = 0;
-			
 			return winner;
+		} else {
+			currentID++;
+			if (currentID == playerlist.size()) currentID = 0;
+			return true;
 		}
 	}
 	
