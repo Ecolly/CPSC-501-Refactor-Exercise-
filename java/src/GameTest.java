@@ -7,7 +7,7 @@ public class GameTest {
     Game g = new Game();
     {
         g.currentID = 0;
-        g.add("bob");
+        g.addPlayer("bob");
     }
     @Test
     public void didPlayerWintest(){ //if player loses then the test is set to true
